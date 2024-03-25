@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/style_index.css')
+  body
+    div#header
+      a(href="/")
+        span#logo [ Strona z rezerwacjami WFAIS ]
+    div.container
+      block content
+    block callendar 
+    div.container
+      block form
