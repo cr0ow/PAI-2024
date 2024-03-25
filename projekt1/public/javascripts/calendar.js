@@ -8,14 +8,11 @@ var anythingBooked_ = false
 
 function checkButton() {
     let submit = document.getElementById('confirmBooking')
-    console.log(name_, surname_, anythingBooked_)
     if(name_ && surname_ && anythingBooked_) {
-        console.log("disabled false")
         submit.disabled = false
         submit.classList.remove('buttonDisabled')
     }
     else {
-        console.log("disabled true")
         submit.disabled = true
         submit.classList.add('buttonDisabled')
     }
