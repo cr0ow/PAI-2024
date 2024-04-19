@@ -1,0 +1,75 @@
+.button {
+  background-color: var(--green);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--black);
+}
+
+.button:hover {
+  background-color: var(--hover-green);
+}
+
+.buttonDisabled:hover {
+  background-color: var(--green);
+  cursor: default;
+}
+
+.listCell {
+  border: 1px solid #000;
+}
+
+.itemList {
+  border: 2px solid var(--black); 
+  border-radius: 5px;
+  background-color: var(--white);
+  table-layout: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hourField {
+  background-color: var(--light-gray-header);
+}
+
+.booked {
+  background-color: var(--red);
+  text-align: center;
+}
+
+.notBooked {
+  text-align: center;
+  cursor: pointer;
+  min-width: 56px;
+}
+
+.holiday {
+  background-color: var(--light-gray-callendar);
+  padding: 10px;
+}
+
+#submitForm {
+  display: inline-block;
+  max-width: 40%;
+  padding: 20px;
+  border: 2px solid var(--black);
+  border-radius: 5px;
+}
+
+th {
+  background-color: var(--light-gray-header);
+}
+
+tr {
+  height: auto;
+  margin:0;
+  padding:0;
+}
+
+form {
+  text-align: center;
+  align-items: center;
+}

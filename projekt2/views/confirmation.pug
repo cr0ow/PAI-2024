@@ -1,0 +1,21 @@
+extends layout 
+
+block content
+  div#confirmationScreen
+    h1 Rezerwacja przebiegła pomyślnie! 
+    h2 Poniżej widnieją wprowadzone przez Ciebie dane oraz zapisane rezerwacje:
+    h3= `Imię i nazwisko rezerwującego: ${name}`
+    table.itemList(cellpadding="10", cellspacing="0", border="1")
+      thead
+        tr.listCell
+          th Data
+          th Dzień tygodnia
+          th Godziny
+      tbody
+        each item in bookings
+          tr.listCell
+            td= item.date
+            td= item.weekDay
+            td= item.hours
+    p W przypadku pomyłki, chęci rezygnacji z rezerwacji lub niezgodności prosimy o kontakt pod numerem telefonu 123 456 789. 
+    a.button(href="/" style="padding: 10px") Wróć do ekranu głównego

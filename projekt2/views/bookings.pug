@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  a.button(href="/" style="padding: 10px") << Powrót
+  h1= thing.name
+  h3= thing.description
+  p Wybierz interesujący Cię termin poprzez kliknięcie w kafelek w kalendarzu. Aby dokonać rezerwacji wybierz przynajmniej jeden termin oraz podaj w formularzu poniżej swoje imię i nazwisko. Możesz dokonać więcej niż jednej rezerwacji za jednym razem. Kliknij przycisk "Rezerwuję" aby potwierdzić.
+block callendar
+  table.itemList(cellpadding="10", cellspacing="0", border="1")
+    thead
+    tr.listCell
+      th Godzina
+      each item in data.weekDays 
+        th 
+          span= item.day
+          br
+          span= item.date
+    tbody
+      each booking in data.bookings
+        tr.listCell
+        td.hourField= `${booking.hour}:00`
+          each item in booking.data
+            if item.whoBooked != null
+              td.booked= item.whoBooked
+            else if item.weekDay == 'Sobota' || item.weekDay == 'Niedziela'
+              td.holiday
+            else
+              - var month = item.date.getMonth() + 1
+              if month < 10
+                - var month = `0${month}`
+              - var day = item.date.getDate()
+              if day < 10
+                - var day = `0${day}`
+              td.notBooked(id=`${item.id}` name=`${day}.${month};${booking.hour}` onclick=`changeStatus(${item.id})`)
+block form
+  form(id="confirmBookingForm" action="/booking-confirmation", method="post")
+    div#submitForm
+      label(for="name") Imię: 
+      input(id="nameInput" type="text" name="name" onchange="validateTextField(nameInput)")
+      br
+      br
+      label(for="surname") Nazwisko: 
+      input(id="surnameInput" type="text" name="surname" onchange="validateTextField(surnameInput)")
+      br
+      br
+      input.button.buttonDisabled(id="confirmBooking" type="submit" disabled="true" value="Rezerwuję" style="cursor: pointer; padding: 10px")
+    br
+    input(type="text", name="bookings" id="bookings" style="visibility: hidden")
+    input(type="text", name="thingId" id="thingId" style="visibility: hidden" value=`${thing.id}`)
+  script(src='/javascripts/calendar.js')

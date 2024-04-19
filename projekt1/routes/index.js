@@ -32,7 +32,7 @@ router.get('/bookings/:id/', (req, res) => {
         let temp = new Date(today)
         temp.setDate(today.getDate() + days)
         temp.setHours(i)
-        tempData.push({ id: id++, weekDay: week[(day + 4) % 7], dayNumber: days, hour: i, date: temp, whoBooked: null })
+        tempData.push({ id: id++, weekDay: week[(day) % 7], dayNumber: days, hour: i, date: temp, whoBooked: null })
         days++;
       }
       bookings[i - 7].data = tempData

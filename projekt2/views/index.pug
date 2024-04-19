@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Rzeczy dostępne do rezerwacji
+  table.itemList(cellpadding="10", cellspacing="0", border="1")
+    thead
+      tr.listCell
+        th Nazwa
+        th Opis
+        th Opiekun
+        th Telefon opiekuna
+        th Pokój opiekuna
+        th 
+    tbody
+      each item in items
+        tr.listCell
+          td= item.name
+          td= item.description
+          td= item.keeperName
+          td= item.keeperPhoneNumber
+          td= item.keeperRoom
+          td
+            a.button(href=`/bookings/${item.id}`) Sprawdź dostępne terminy
+  br
+  p W przypadku pozycji, które nie mają przypisanych opiekunów, prosimy o kontakt pod numerem telefonu 123 456 789. 
+
