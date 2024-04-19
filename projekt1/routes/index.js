@@ -5,7 +5,7 @@ const db = new sqlite3.Database('projekt1.bd')
 const week = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
 
 router.get('/', (req, res) => {
-  db.all("SELECT * FROM THINGS ORDER BY NAME", (err, rows) => { 
+  db.all("SELECT * FROM THINGS ORDER BY NAME", (err, rows) => {
     var items = []
     rows.forEach((row) => items.push(row))
     res.render('index', { title: 'Rezerwacje', items: items })
